@@ -21,3 +21,13 @@ export const hasUpperCase = (str) => {
 export const hasNumber = (str) => {
   return /\d/.test(str);
 };
+
+export const passwordValid = (value, email) => {
+  return (
+    hasCorrectLimit(value) &&
+    hasLowerCase(value) &&
+    !usedEmailAddress(value, email) &&
+    hasUpperCase(value) &&
+    hasNumber(value)
+  );
+}

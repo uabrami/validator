@@ -1,7 +1,16 @@
 import React, { useEffect, useState } from 'react';
-import './App.css';
-import { hasLowerCase } from './helpers';
+
 import ValidationMessages from '../ValidationMessages';
+
+import './App.css';
+import {
+  hasCorrectLimit,
+  hasLowerCase,
+  hasNumber,
+  hasUpperCase,
+  passwordValid,
+  usedEmailAddress,
+} from './helpers';
 
 const App = () => {
   const [value, setValue] = useState('');
@@ -27,22 +36,29 @@ const App = () => {
       isCompleted: false
     },
   ]);
+
+  const email = 'uma@gmail.com';
+
   const handleChange = (e) => {
     setValue(e.target.value);
   };
 
   const handleSubmit = (e) => {
-    alert('Congrats, you have submitted your password!');
+    if(passwordValid(value, email)){
+      alert('Congrats, you have submitted your password!');
+    } else {
+      alert('Your password does not meet the requirements, please try again.');
+    }
     e.preventDefault();
   }
 
   const completeMessage = () => {
-  const newMessages = [...messages];
-    if (hasLowerCase(value)){
-      newMessages[1].isCompleted = true;
-    } else if (!hasLowerCase(value)){
-      newMessages[1].isCompleted = false;
-    }
+    const newMessages = [...messages];
+    newMessages[0].isCompleted = hasCorrectLimit(value) ? true : false;
+    newMessages[1].isCompleted = hasLowerCase(value) ? true : false;
+    newMessages[2].isCompleted = !usedEmailAddress(value, email) && value.length ? true : false;
+    newMessages[3].isCompleted = hasUpperCase(value) ? true : false;
+    newMessages[4].isCompleted = hasNumber(value) ? true : false;
     setMessages(newMessages);
   };
 
