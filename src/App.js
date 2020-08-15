@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import './App.css';
 
-
+import ValidationMessages from './ValidationMessages';
 
 const App = () => {
   const [value, setValue] = useState('');
@@ -23,8 +23,10 @@ const App = () => {
             value={value}
             onChange={handleChange}
           />
+          <button>Show Password</button>
           <input type="submit" value="Submit" />
         </form>
+        <ValidationMessages />
         </main>
     </div>
   );

@@ -1,9 +1,8 @@
 
 .App {
-  display: block;
+  align-items: center;
   display: flex;
   flex-direction: column;
-  align-items: center;
   justify-content: flex-start;
 }
 
@@ -11,12 +10,24 @@
   min-height: 100vh;
 }
 .App-input {
-  width: 20rem;
-  height: 2rem;
-  border: 0.1rem solid #d3d3d3;
   border-radius: 0.3rem;
-  margin-right: 0.3rem;
+  border: 0.1rem solid #d3d3d3;
+  height: 2rem;
+  margin-right: 0.5rem;
+  width: 20rem;
 }
 p {
   font-size: 1rem;
+  margin-bottom: 0.3rem;
+}
+button, input[type=submit] {
+  height: 2.3rem;
+  border-radius: 0.3rem;
+  margin-right: 0.5rem;
+}
+button {
+  background-color:#d3d3d3;
+}
+input[type=submit] {
+  background-color: #F07100;
 }
