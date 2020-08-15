@@ -1,19 +1,24 @@
 import React from "react";
 import "./styles.css";
 
-const ValidationMessages = () => (
+const Message = ({ message }) => <li>{message.text}</li>;
+
+const ValidationMessages = ({messages}) => (
   <div className="Container">
     <div className="row">
       <div className="column">
-        <p>Message 1</p>
-        <p>Message 2</p>
-      </div>
-      <div className="column">
-        <p>Message 3</p>
-        <p>Message 4</p>
+        <ul>
+          {messages.map((message, i) => (
+            <Message
+              key={i}
+              message={message}
+            />
+          ))}
+        </ul>
       </div>
     </div>
   </div>
 );
+
 
 export default ValidationMessages;
