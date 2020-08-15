@@ -1,5 +1,3 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
-
 ## Password Validator
 
 The goal of this app is to provide an example of using React and CSS to create a password input, keystroke validation, and the ability for the user to show the password during creation.
