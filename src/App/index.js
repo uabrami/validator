@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import './App.css';
-
+import { hasLowerCase } from './helpers';
 import ValidationMessages from '../ValidationMessages';
 
 const App = () => {
@@ -27,11 +27,29 @@ const App = () => {
       isCompleted: false
     },
   ]);
-  const handleChange = (e) => setValue(e.target.value);
+  const handleChange = (e) => {
+    setValue(e.target.value);
+  };
+
   const handleSubmit = (e) => {
     alert('Congrats, you have submitted your password!');
     e.preventDefault();
   }
+
+  const completeMessage = () => {
+  const newMessages = [...messages];
+    if (hasLowerCase(value)){
+      newMessages[1].isCompleted = true;
+    } else if (!hasLowerCase(value)){
+      newMessages[1].isCompleted = false;
+    }
+    setMessages(newMessages);
+  };
+
+  useEffect(() => {
+    completeMessage();
+  }, [value]);
+
   console.log('value', value);
   return (
     <div className="App">
