@@ -1,27 +1,21 @@
-.container {
-  width: 100%;
-}
 
-.row {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  width: 80%;
-}
-
-.column {
+.messagesContainer {
   display: flex;
   flex-direction: column;
-  flex-basis: 100%;
-  flex: 1;
+  width: 100%;
 }
 
 ul {
   list-style: none;
+  padding: 0;
 }
 
 ul li::before {
   content: "\2022";
   color: #F07100;
   margin-right: 0.3rem;
+}
+
+ul li {
+  padding: 0.5rem 0;
 }

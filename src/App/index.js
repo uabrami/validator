@@ -54,11 +54,11 @@ const App = () => {
   console.log('value', value);
   return (
     <div className="App">
-      <main className="App-main">
-      <p>Password:</p>
+      <main className="main">
+      <p>Password</p>
         <form className='form' onSubmit={handleSubmit}>
           <input
-            className="App-input"
+            className="passwordInput"
             type={showText ? "text" : "password"}
             value={value}
             onChange={handleChange}
