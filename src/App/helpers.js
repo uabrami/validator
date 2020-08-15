@@ -22,7 +22,7 @@ export const hasNumber = (str) => {
   return /\d/.test(str);
 };
 
-export const passwordValid = (value, email) => {
+export const isPasswordValid = (value, email) => {
   return (
     hasCorrectLimit(value) &&
     hasLowerCase(value) &&
@@ -31,3 +31,13 @@ export const passwordValid = (value, email) => {
     hasNumber(value)
   );
 }
+
+export const isCompleteMessage = (value, email, messages, setMessages) => {
+  const newMessages = [...messages];
+  newMessages[0].isCompleted = hasCorrectLimit(value) ? true : false;
+  newMessages[1].isCompleted = hasLowerCase(value) ? true : false;
+  newMessages[2].isCompleted = !usedEmailAddress(value, email) && value.length ? true : false;
+  newMessages[3].isCompleted = hasUpperCase(value) ? true : false;
+  newMessages[4].isCompleted = hasNumber(value) ? true : false;
+  setMessages(newMessages);
+};

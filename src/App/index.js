@@ -1,16 +1,10 @@
 import React, { useEffect, useState } from 'react';
 
 import ValidationMessages from '../ValidationMessages';
+import ShowPassword from './ShowPassword';
 
-import './App.css';
-import {
-  hasCorrectLimit,
-  hasLowerCase,
-  hasNumber,
-  hasUpperCase,
-  passwordValid,
-  usedEmailAddress,
-} from './helpers';
+import './styles.css';
+import { isPasswordValid, isCompleteMessage } from './helpers';
 
 const App = () => {
   const [value, setValue] = useState('');
@@ -36,15 +30,19 @@ const App = () => {
       isCompleted: false
     },
   ]);
-
+  const [showText, setShowText] = useState(false);
   const email = 'uma@gmail.com';
+
+  useEffect(() => {
+    isCompleteMessage(value, email, messages, setMessages);
+  }, [value]);
 
   const handleChange = (e) => {
     setValue(e.target.value);
   };
 
   const handleSubmit = (e) => {
-    if(passwordValid(value, email)){
+    if(isPasswordValid(value, email)){
       alert('Congrats, you have submitted your password!');
     } else {
       alert('Your password does not meet the requirements, please try again.');
@@ -52,33 +50,20 @@ const App = () => {
     e.preventDefault();
   }
 
-  const completeMessage = () => {
-    const newMessages = [...messages];
-    newMessages[0].isCompleted = hasCorrectLimit(value) ? true : false;
-    newMessages[1].isCompleted = hasLowerCase(value) ? true : false;
-    newMessages[2].isCompleted = !usedEmailAddress(value, email) && value.length ? true : false;
-    newMessages[3].isCompleted = hasUpperCase(value) ? true : false;
-    newMessages[4].isCompleted = hasNumber(value) ? true : false;
-    setMessages(newMessages);
-  };
-
-  useEffect(() => {
-    completeMessage();
-  }, [value]);
-
+  const handleToggle = () => setShowText(!showText);
   console.log('value', value);
   return (
     <div className="App">
       <main className="App-main">
       <p>Password:</p>
-        <form onSubmit={handleSubmit}>
+        <form className='form' onSubmit={handleSubmit}>
           <input
             className="App-input"
-            type="text"
+            type={showText ? "text" : "password"}
             value={value}
             onChange={handleChange}
           />
-          <button>Show Password</button>
+          <ShowPassword handleToggle={handleToggle} />
           <input type="submit" value="Submit" />
         </form>
         <ValidationMessages messages={messages} />
@@ -88,3 +73,6 @@ const App = () => {
 };
 
 export default App;
+
+
+          // {/* <input type="checkbox" onClick={() => setShowText(!showText)} /> */}
