@@ -4,6 +4,7 @@
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
+  margin-top: 5rem;
 }
 
 .checkbox {
@@ -18,15 +19,26 @@
 }
 
 .confirmationMessage {
-  display: inline-block;
   font-size: 0.8rem;
-  vertical-align: middle;
 }
 
-.confirmationText {
-  display: inline-block;
-  font-size: 0.8rem;
-  vertical-align: middle;
+.fade-wrapper {
+  transition:opacity ease-in-out;
+}
+.fade-out {
+  opacity:0;
+}
+.fade-in {
+  opacity:1;
+}
+
+.labelConfMessageDiv {
+  align-items: center;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 100%;
+  margin-bottom: 0.3rem;
 }
 
 .form {
@@ -34,10 +46,6 @@
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
-}
-
-.main {
-  min-height: 100vh;
 }
 
 .passwordInput {
@@ -60,14 +68,9 @@
   width: 4rem;
 }
 
-p {
-  margin-bottom: 0.3rem;
-}
-
 button, input[type=submit] {
   border-radius: 0.3rem;
   height: 2.2rem;
-  margin-right: 0.5rem;
 }
 
 button {
@@ -76,4 +79,17 @@ button {
 
 input[type=submit] {
   background-color: #F07100;
+}
+
+input[type=submit]:hover {
+  background-color: black;
+  color: white;
+}
+
+input[type=submit]:focus, input[type="checkbox"]:focus, input:focus {
+  outline: none;
+}
+
+p {
+  margin: 0;
 }

@@ -3,18 +3,19 @@ import axios from 'axios';
 
 import ShowPassword from './ShowPassword';
 import ValidationMessages from '../ValidationMessages';
-
+import ConfirmationMessage from './ConfirmationMessage';
 import './styles.css';
 import { initialStateMessages } from './initialState';
 import { isPasswordValid, isCompleteMessage } from './helpers';
 
 const App = () => {
-  const [value, setValue] = useState('');
+  const [confMessage, setConfMessage] = useState('');
+  const [fadeState, setfadeState] = useState('fade-out');
   const [messages, setMessages] = useState (initialStateMessages);
   const [showText, setShowText] = useState(false);
   const [user, setUser] = useState('');
-  const [confMessage, setConfMessage] = useState('');
-
+  const [value, setValue] = useState('');
+  const FADE_DURATION = 2500;
   useEffect(() => {
     const fetchData = async () => {
       const config = {
@@ -40,17 +41,34 @@ const App = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     if(isPasswordValid(value, user)){
-      alert('Congrats, you have submitted your password!');
+      setConfMessage('Congrats, you have successfully submited your password!');
+      setfadeState('fade-in');
     } else {
-      alert('Your password does not meet the requirements, please try again.');
+      setConfMessage('Your password does not meet the requirements, please try again.');
+      setfadeState('fade-in');
     }
+
+    setTimeout(() => {
+      setfadeState('fade-out');
+    }, FADE_DURATION);
   }
 
   const handleToggle = () => setShowText(!showText);
   return (
-    <div className="App">
-      <main className="main">
+    <div className='App'>
+      <main className='main'>
+      <div className='labelConfMessageDiv'>
       <p>Password</p>
+      <div
+        className={`fade-wrapper ${fadeState}`}
+        style={{ transitionDuration: `${FADE_DURATION}ms`}}
+        >
+        < ConfirmationMessage
+          isValid={isPasswordValid(value, user)}
+          message={confMessage}
+        />
+      </div>
+      </div>
         <form className='form' onSubmit={handleSubmit}>
           <input
             className="passwordInput"

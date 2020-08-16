@@ -2,9 +2,14 @@ import React from "react";
 import "./styles.css";
 
 const ConfirmationMessage = ({ isValid, message }) =>{
-  const isValid = isValid ? '#61B329' : '#DC143C';
+  const isValidColor = isValid ? '#61B329' : '#DC143C';
  return (
-    <p style={{color: isValid}}>{message}</p>
+    <p
+      className='confirmationMessage'
+      style={{color: isValidColor}}
+    >
+      {message}
+    </p>
 );
  }
 
