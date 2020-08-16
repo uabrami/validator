@@ -8,8 +8,10 @@ export const hasLowerCase = (str) => {
 };
 
 //notEmail
-export const usedEmailAddress = (str, email) => {
-  return str === email;
+export const usedEmailAddress = (str, user) => {
+  const emailFragment = user.substring(user.indexOf("email: "), user.indexOf("@"))
+const username = emailFragment.substring(8);
+  return str.includes(username);
 };
 
 //uppercase
@@ -22,21 +24,21 @@ export const hasNumber = (str) => {
   return /\d/.test(str);
 };
 
-export const isPasswordValid = (value, email) => {
+export const isPasswordValid = (value, user) => {
   return (
     hasCorrectLimit(value) &&
     hasLowerCase(value) &&
-    !usedEmailAddress(value, email) &&
+    !usedEmailAddress(value, user) &&
     hasUpperCase(value) &&
     hasNumber(value)
   );
 }
 
-export const isCompleteMessage = (value, email, messages, setMessages) => {
+export const isCompleteMessage = (value, user, messages, setMessages) => {
   const newMessages = [...messages];
   newMessages[0].isCompleted = hasCorrectLimit(value) ? true : false;
   newMessages[1].isCompleted = hasLowerCase(value) ? true : false;
-  newMessages[2].isCompleted = !usedEmailAddress(value, email) && value.length ? true : false;
+  newMessages[2].isCompleted = !usedEmailAddress(value, user) && value.length ? true : false;
   newMessages[3].isCompleted = hasUpperCase(value) ? true : false;
   newMessages[4].isCompleted = hasNumber(value) ? true : false;
   setMessages(newMessages);

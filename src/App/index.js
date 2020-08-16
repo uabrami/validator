@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import axios from 'axios';
 
 import ValidationMessages from '../ValidationMessages';
 import ShowPassword from './ShowPassword';
@@ -31,10 +32,22 @@ const App = () => {
     },
   ]);
   const [showText, setShowText] = useState(false);
-  const email = 'uma@gmail.com';
+  const [user, setUser] = useState('');
+  useEffect(() => {
+    const fetchData = async () => {
+      const config = {
+        method: 'post',
+        url: 'http://www.mocky.io/v2/5de6c328370000a21d0925f2',
+        headers: { 'Content-Type': 'application/json; charset=UTF-8'}
+      }
+      const result = await axios(config);
+      setUser(result.data);
+    };
+    fetchData();
+  }, []);
 
   useEffect(() => {
-    isCompleteMessage(value, email, messages, setMessages);
+    isCompleteMessage(value, user, messages, setMessages);
   }, [value]);
 
   const handleChange = (e) => {
@@ -42,7 +55,7 @@ const App = () => {
   };
 
   const handleSubmit = (e) => {
-    if(isPasswordValid(value, email)){
+    if(isPasswordValid(value, user)){
       alert('Congrats, you have submitted your password!');
     } else {
       alert('Your password does not meet the requirements, please try again.');
