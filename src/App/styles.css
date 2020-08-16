@@ -1,5 +1,4 @@
-
-.App {
+.app {
   align-items: center;
   display: flex;
   flex-direction: column;
@@ -33,20 +32,20 @@
   opacity:1;
 }
 
-.labelConfMessageDiv {
+.form {
+  align-items: center;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+}
+
+.messageWrapper {
   align-items: center;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   width: 100%;
   margin-bottom: 0.3rem;
-}
-
-.form {
-  align-items: center;
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-start;
 }
 
 .passwordInput {
@@ -74,7 +73,7 @@ input[type=submit] {
   background-color: #F07100;
   border-radius: 0.3rem;
   border: 0.1rem solid #d3d3d3;
-  height: 2.2rem;
+  height: 2.25rem;
 }
 
 input[type=submit]:hover {

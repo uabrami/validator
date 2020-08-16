@@ -1,0 +1,85 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<App /> Should render and match the snapshot 1`] = `
+<div
+  class="app"
+>
+  <main>
+    <div
+      class="messageWrapper"
+    >
+      <p>
+        Password
+      </p>
+      <div
+        class="fade-wrapper fade-out"
+        style="transition-duration: 1500ms;"
+      >
+        <p
+          class="confirmationMessage"
+          style="color: rgb(220, 20, 60);"
+        />
+      </div>
+    </div>
+    <form
+      class="form"
+    >
+      <input
+        aria-label="input password"
+        class="passwordInput"
+        type="password"
+        value=""
+      />
+      <div
+        class="showPasswordContainer"
+      >
+        <input
+          class="checkbox"
+          type="checkbox"
+        />
+        <span
+          class="checkboxTitle"
+        >
+          Show
+        </span>
+      </div>
+      <input
+        aria-label="submit password"
+        type="submit"
+        value="Submit"
+      />
+    </form>
+    <div
+      class="messagesContainer"
+    >
+      <ul>
+        <li>
+          <span>
+            8-72 Characters
+          </span>
+        </li>
+        <li>
+          <span>
+            1 Lowercase Character
+          </span>
+        </li>
+        <li>
+          <span>
+            Should Not Match Your Email Address
+          </span>
+        </li>
+        <li>
+          <span>
+            1 Uppercase Character
+          </span>
+        </li>
+        <li>
+          <span>
+            1 Number
+          </span>
+        </li>
+      </ul>
+    </div>
+  </main>
+</div>
+`;

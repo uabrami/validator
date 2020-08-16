@@ -1,0 +1,10 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<ConfirmationMessage /> Should render and match the snapshot 1`] = `
+<p
+  class="confirmationMessage"
+  style="color: rgb(97, 179, 41);"
+>
+  test
+</p>
+`;

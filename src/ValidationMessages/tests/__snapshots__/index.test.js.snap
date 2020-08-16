@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<ValidationMessages /> Should render and match the snapshot 1`] = `
+<div
+  class="messagesContainer"
+>
+  <ul>
+    <li>
+      <span>
+        8-72 Characters
+      </span>
+    </li>
+  </ul>
+</div>
+`;

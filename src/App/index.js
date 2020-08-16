@@ -18,8 +18,11 @@ const App = () => {
   const [showText, setShowText] = useState(false);
   const [user, setUser] = useState("");
   const [value, setValue] = useState("");
-  const FADE_DURATION = 2500;
+
+  const fadeDuration = 1500;
   const isValid = isPasswordValid(value, user);
+  const messageDuration = 2500;
+
   useEffect(() => {
     const fetchData = async () => {
       const config = {
@@ -53,18 +56,18 @@ const App = () => {
     }
     setTimeout(() => {
       setfadeState("fade-out");
-    }, FADE_DURATION);
+    }, messageDuration);
   };
 
   const handleToggle = () => setShowText(!showText);
   return (
-    <div className="App">
-      <main className="main">
-        <div className="labelConfMessageDiv">
+    <div className="app">
+      <main>
+        <div className="messageWrapper">
           <p>Password</p>
           <div
             className={`fade-wrapper ${fadeState}`}
-            style={{ transitionDuration: `${FADE_DURATION}ms` }}
+            style={{ transitionDuration: `${fadeDuration}ms` }}
           >
             <ConfirmationMessage isValid={isValid} message={confMessage} />
           </div>
