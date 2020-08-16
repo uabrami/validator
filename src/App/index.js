@@ -48,6 +48,7 @@ const App = () => {
 
   useEffect(() => {
     isCompleteMessage(value, user, messages, setMessages);
+    // eslint-disable-next-line
   }, [value]);
 
   const handleChange = (e) => {
