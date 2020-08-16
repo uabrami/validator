@@ -10,13 +10,13 @@ ul {
   padding: 0;
 }
 
+ul li {
+  padding: 0.5rem 0;
+}
+
 ul li::before {
   content: "\2022";
   color: #F07100;
   margin-right: 0.3rem;
   text-decoration: "";
-}
-
-ul li {
-  padding: 0.5rem 0;
 }

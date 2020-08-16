@@ -8,6 +8,7 @@
 }
 
 .checkbox {
+  background-color: white;
   margin-right: 0.3rem;
   vertical-align: middle;
 }
@@ -65,21 +66,15 @@
   flex-direction: row;
   height: 2rem;
   margin-right: 0.5rem;
-  width: 4rem;
-}
-
-button, input[type=submit] {
-  border-radius: 0.3rem;
-  height: 2.2rem;
-}
-
-button {
-  background-color:#d3d3d3;
+  padding: 0 0.2rem;
+  width: 3.6rem;
 }
 
 input[type=submit] {
   background-color: #F07100;
+  border-radius: 0.3rem;
   border: 0.1rem solid #d3d3d3;
+  height: 2.2rem;
 }
 
 input[type=submit]:hover {
@@ -88,6 +83,7 @@ input[type=submit]:hover {
 }
 
 input[type=submit]:focus, input[type="checkbox"]:focus, input:focus {
+  background: transparent;
   outline: none;
 }
 
