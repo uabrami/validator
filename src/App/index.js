@@ -1,36 +1,16 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 
-import ValidationMessages from '../ValidationMessages';
 import ShowPassword from './ShowPassword';
+import ValidationMessages from '../ValidationMessages';
 
 import './styles.css';
+import { initialStateMessages } from './initialState';
 import { isPasswordValid, isCompleteMessage } from './helpers';
 
 const App = () => {
   const [value, setValue] = useState('');
-  const [messages, setMessages] = useState ([
-    {
-      text: '8-72 Characters',
-      isCompleted: false,
-    },
-    {
-      text: '1 Lowercase Character',
-      isCompleted: false,
-    },
-    {
-      text: 'Should Not Match Your Email Address',
-      isCompleted: false,
-    },
-    {
-      text: '1 Uppercase Character',
-      isCompleted: false
-    },
-    {
-      text: '1 Number',
-      isCompleted: false
-    },
-  ]);
+  const [messages, setMessages] = useState (initialStateMessages);
   const [showText, setShowText] = useState(false);
   const [user, setUser] = useState('');
   useEffect(() => {
@@ -56,16 +36,15 @@ const App = () => {
   };
 
   const handleSubmit = (e) => {
+    e.preventDefault();
     if(isPasswordValid(value, user)){
       alert('Congrats, you have submitted your password!');
     } else {
       alert('Your password does not meet the requirements, please try again.');
     }
-    e.preventDefault();
   }
 
   const handleToggle = () => setShowText(!showText);
-  console.log('value', value);
   return (
     <div className="App">
       <main className="main">
