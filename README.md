@@ -13,6 +13,6 @@ Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
 
 ## App Features
- - As users type in password input, a section underneath the input keeps track of the met requirements.
- - At any time, the user can click the "submit" button. If the password provided meets all the requirements, a confirmation message will appear. Otherwise, an error message will appear and prompt the user to try a new password.
+ - As users type in their new password, the section below will show which validation requirements are met.
+ - At any time, the user can click the "submit" button. If the password provided meets all the requirements, a green confirmation message will appear. Otherwise, a red error message will appear and prompt the user to try a new password.
  - Users may view their password text by clicking the "Show" checkbox. If the checkbox is unchecked, the password will be hidden.
