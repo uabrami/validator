@@ -13,6 +13,8 @@ const App = () => {
   const [messages, setMessages] = useState (initialStateMessages);
   const [showText, setShowText] = useState(false);
   const [user, setUser] = useState('');
+  const [confMessage, setConfMessage] = useState('');
+
   useEffect(() => {
     const fetchData = async () => {
       const config = {
@@ -66,6 +68,3 @@ const App = () => {
 };
 
 export default App;
-
-
-          // {/* <input type="checkbox" onClick={() => setShowText(!showText)} /> */}

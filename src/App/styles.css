@@ -10,7 +10,20 @@
   margin-right: 0.3rem;
   vertical-align: middle;
 }
+
 .checkboxTitle {
+  display: inline-block;
+  font-size: 0.8rem;
+  vertical-align: middle;
+}
+
+.confirmationMessage {
+  display: inline-block;
+  font-size: 0.8rem;
+  vertical-align: middle;
+}
+
+.confirmationText {
   display: inline-block;
   font-size: 0.8rem;
   vertical-align: middle;
