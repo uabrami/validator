@@ -83,7 +83,6 @@ input[type=submit]:hover {
 }
 
 input[type=submit]:focus, input[type="checkbox"]:focus, input:focus {
-  background: transparent;
   outline: none;
 }
 

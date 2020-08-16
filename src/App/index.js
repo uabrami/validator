@@ -6,7 +6,10 @@ import ValidationMessages from "../ValidationMessages";
 import ConfirmationMessage from "./ConfirmationMessage";
 import { initialStateMessages } from "./initialState";
 import { isPasswordValid, isCompleteMessage } from "./helpers";
+import CONFIRMATION_MESSAGES from "./constants";
 import "./styles.css";
+
+const { isNotValidMessage, isValidMessage } = CONFIRMATION_MESSAGES;
 
 const App = () => {
   const [confMessage, setConfMessage] = useState("");
@@ -16,7 +19,7 @@ const App = () => {
   const [user, setUser] = useState("");
   const [value, setValue] = useState("");
   const FADE_DURATION = 2500;
-
+  const isValid = isPasswordValid(value, user);
   useEffect(() => {
     const fetchData = async () => {
       const config = {
@@ -41,13 +44,11 @@ const App = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (isPasswordValid(value, user)) {
-      setConfMessage("Congrats, you have successfully submited your password!");
+    if (isValid) {
+      setConfMessage(isValidMessage);
       setfadeState("fade-in");
     } else {
-      setConfMessage(
-        "Your password does not meet the requirements, please try again."
-      );
+      setConfMessage(isNotValidMessage);
       setfadeState("fade-in");
     }
     setTimeout(() => {
@@ -65,23 +66,27 @@ const App = () => {
             className={`fade-wrapper ${fadeState}`}
             style={{ transitionDuration: `${FADE_DURATION}ms` }}
           >
-            <ConfirmationMessage
-              isValid={isPasswordValid(value, user)}
-              message={confMessage}
-            />
+            <ConfirmationMessage isValid={isValid} message={confMessage} />
           </div>
         </div>
         <form className="form" onSubmit={handleSubmit}>
           <input
+            aria-label="input password"
             className="passwordInput"
             type={showText ? "text" : "password"}
             value={value}
             onChange={handleChange}
           />
-          <ShowPassword handleToggle={handleToggle} />
-          <input type="submit" value="Submit" />
+          <ShowPassword
+            aria-label="show password text"
+            handleToggle={handleToggle}
+          />
+          <input aria-label="submit password" type="submit" value="Submit" />
         </form>
-        <ValidationMessages messages={messages} />
+        <ValidationMessages
+          aria-label="password requirements"
+          messages={messages}
+        />
       </main>
     </div>
   );
